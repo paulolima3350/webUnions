@@ -1,0 +1,38 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow" style="width: 100%; max-width: 400px;">
+    <div class="card-header text-center">
+      <h3>Login</h3>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="login()">
+        <div class="mb-3">
+          <label for="username" class="form-label">Email</label>
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            placeholder="Digite seu usuário"
+            [(ngModel)]="credentials.username"
+            name="username"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Senha</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Digite sua senha"
+            [(ngModel)]="credentials.password"
+            name="password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary w-100">
+          Entrar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

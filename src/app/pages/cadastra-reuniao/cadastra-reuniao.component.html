@@ -1,0 +1,62 @@
+<div class="container mt-5">
+  <div class="card shadow-lg border-0 rounded" style="max-width: 600px; margin: 0 auto;">
+    <div class="card-header bg-primary text-white text-center">
+      <h4>Cadastro de Reunião 1 a 1</h4>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" [formGroup]="formReuniao">
+        <!-- Seleção do Membro -->
+        <div class="form-floating mb-3">
+          <select id="membro" class="form-select" formControlName="membro">
+            <option value="" disabled selected>Escolha um membro...</option>
+            <option *ngFor="let membro of membros" [value]="membro.id">
+              {{ membro.nome }}
+            </option>
+          </select>
+          <label for="membro">Selecione o Membro</label>
+        </div>
+
+        <!-- Data e Hora -->
+        <div class="form-floating mb-3">
+          <input
+            type="datetime-local"
+            id="dataHora"
+            class="form-control"
+            formControlName="dataHora"
+          />
+          <label for="dataHora">Data e Hora</label>
+        </div>
+
+        <!-- Local -->
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            id="local"
+            class="form-control"
+            placeholder="Digite o local da reunião"
+            formControlName="local"
+          />
+          <label for="local">Local</label>
+        </div>
+
+        <!-- Motivo -->
+        <div class="form-floating mb-3">
+          <textarea
+            id="motivo"
+            class="form-control"
+            rows="3"
+            placeholder="Descreva o motivo da reunião"
+            formControlName="motivo"
+            style="height: 120px;"
+          ></textarea>
+          <label for="motivo">Motivo</label>
+        </div>
+
+        <!-- Botão de cadastro -->
+        <button type="submit" class="btn btn-primary btn-lg w-100">
+          Cadastrar Reunião
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

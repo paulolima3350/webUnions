@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <img
+        src="/img/logo-unios.png"
+        alt="Logo Web Unions"
+        style="height: 40px; margin-right: 10px;"
+        class="img-fluid"
+      />
+      
+    </a>
+
+    <!-- Botão para telas pequenas -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links do menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/home"
+            routerLinkActive="active"
+            aria-current="page"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/cadastrar-membro"
+            routerLinkActive="active"
+            >Cadastrar Membro</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/criar-convidado"
+            routerLinkActive="active"
+            >Convidado</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/consulta-referencia"
+            routerLinkActive="active"
+            >Consultar referência</a
+          >
+        </li>
+      </ul>
+
+      <!-- Informações do usuário logado e botão de logout -->
+      <div
+        class="d-flex align-items-center justify-content-end"
+        *ngIf="usuarioLogado"
+      >
+        <span class="text-white me-3">Bem-vindo, <strong>{{ usuarioLogado }}</strong></span>
+        <button class="btn btn-outline-light btn-sm" (click)="logout()">
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

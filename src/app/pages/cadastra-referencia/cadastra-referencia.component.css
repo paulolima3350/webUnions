@@ -1,0 +1,13 @@
+.card {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .bi-star-fill {
+    margin-right: 5px;
+  }
+  
+  .text-warning {
+    color: #ffc107 !important;
+  }
+  

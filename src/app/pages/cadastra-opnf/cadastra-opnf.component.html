@@ -1,0 +1,69 @@
+<div class="container mt-4">
+    <!-- Título -->
+    <div class="text-center mb-4">
+      <h3>Cadastro de OPNF</h3>
+    </div>
+  
+    <!-- Card de Dados da Referência -->
+    <div class="card mb-4 shadow-lg border-0 rounded">
+      <div class="card-body">
+        <h5 class="card-title text-center">Dados da Referência (Fechada com Sucesso)</h5>
+        <div class="row g-3">
+          <!-- Primeira Coluna -->
+          <div class="col-12 col-md-6">
+            <p><strong>Nome:</strong> {{ referencia.nome }}</p>
+            <p><strong>Data de Contato:</strong> {{ referencia.dataContato }}</p>
+            <p><strong>Status:</strong> {{ referencia.status }}</p>
+          </div>
+          <!-- Segunda Coluna -->
+          <div class="col-12 col-md-6">
+            <p><strong>Telefone:</strong> {{ referencia.telefone }}</p>
+            <p><strong>Especialidade:</strong> {{ referencia.especialidade }}</p>
+            <p><strong>Observações:</strong> {{ referencia.observacoes }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Card do Formulário para Cadastro de OPNF -->
+    <div class="card shadow-lg border-0 rounded">
+      <div class="card-body">
+        <h5 class="card-title text-center">Ficha de Cadastro de OPNF</h5>
+        <form (ngSubmit)="cadastrarOPNF()">
+          <!-- Campo: Valor do OPNF -->
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              id="valorOpnf"
+              class="form-control"
+              placeholder="Digite o valor"
+              [(ngModel)]="opnf.valor"
+              name="valorOpnf"
+            />
+            <label for="valorOpnf">Valor do OPNF</label>
+          </div>
+  
+          <!-- Campo: Observações -->
+          <div class="form-floating mb-3">
+            <textarea
+              id="observacoesOpnf"
+              class="form-control"
+              placeholder="Digite observações sobre o OPNF"
+              style="height: 120px;"
+              [(ngModel)]="opnf.observacoes"
+              name="observacoesOpnf"
+            ></textarea>
+            <label for="observacoesOpnf">Observações</label>
+          </div>
+  
+          <!-- Botão de Cadastro -->
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">
+              Cadastrar OPNF
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

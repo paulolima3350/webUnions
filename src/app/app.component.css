@@ -1,0 +1,29 @@
+/* Fundo com Imagem */
+.bg-image {
+    background-image: url('/img/transferir.png'); /* Certifique-se de usar o caminho correto */
+    background-size: cover; /* Faz a imagem cobrir toda a área */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    min-height: 100vh; /* Altura mínima da página */
+    display: flex; /* Para alinhar conteúdo dentro */
+    justify-content: center; /* Centraliza horizontalmente o conteúdo */
+    align-items: center; /* Centraliza verticalmente o conteúdo */
+    padding: 20px; /* Espaçamento interno */
+    position: relative; /* Permite sobreposições */
+    z-index: 0; /* Define o plano de fundo */
+    filter: brightness(0.95); /* Ajusta o brilho para suavizar */
+  }
+  
+  /* Área do Conteúdo */
+  .content-wrapper {
+    
+    padding: 30px; /* Espaçamento interno */
+    border-radius: 12px; /* Bordas arredondadas */
+    box-shadow: 0 8px 16px rgba(3, 98, 221, 0.7); /* Sombra azul */
+    width: 100%; /* Largura total */
+    max-width: 800px; /* Largura máxima */
+    z-index: 1; /* Garante que fique acima da imagem de fundo */
+    overflow: hidden; /* Evita elementos extras */
+  }
+  
+ 

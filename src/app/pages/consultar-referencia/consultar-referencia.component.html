@@ -1,0 +1,48 @@
+<div class="container mt-4">
+    <div class="text-center mb-4">
+      <h3>Acompanhamento de Referências</h3>
+    </div>
+  
+    <!-- Filtro de Status -->
+    <div class="d-flex justify-content-center mb-4">
+      <button class="btn btn-outline-primary me-2 px-4 py-2" (click)="filtrarReferencias('Não entrei em contato')">Não entrei em contato</button>
+      <button class="btn btn-outline-success me-2 px-4 py-2" (click)="filtrarReferencias('Contatado')">Contatado</button>
+      <button class="btn btn-outline-warning me-2 px-4 py-2" (click)="filtrarReferencias('Sem resposta de referência')">Sem resposta</button>
+      <button class="btn btn-outline-danger me-2 px-4 py-2" (click)="filtrarReferencias('Negócio fechado')">Negócio fechado</button>
+      <button class="btn btn-outline-secondary px-4 py-2" (click)="limparFiltro()">Limpar Filtro</button>
+    </div>
+  
+    <!-- Tabela de Referências Cadastradas -->
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <table class="table table-bordered table-striped">
+          <thead class="table-dark">
+            <tr>
+              <th>#</th>
+              <th>Membro</th>
+              <th>Observações</th>
+              <th>Tipo</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let referencia of referenciasFiltradas">
+              <td>{{ referencia.id }}</td>
+              <td>{{ referencia.nome }}</td>
+              <td>{{ referencia.observacoes }}</td>
+              <td>{{ referencia.tipo }}</td>
+              <td><button class="btn btn-sm" [ngClass]="{
+                    'btn-secondary': referencia.status === 'Não entrei em contato',
+                    'btn-primary': referencia.status === 'Contatado',
+                    'btn-warning': referencia.status === 'Sem resposta de referência',
+                    'btn-success': referencia.status === 'Negócio fechado'
+                  }">{{ referencia.status }}</button></td>
+              <td><button class="btn btn-info btn-sm">Detalhes</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
