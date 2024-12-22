@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CommonModule } from "@angular/common";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastra-referencia',
@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule, HttpClientModule],
   styleUrls: ['./cadastra-referencia.component.css'],
 })
-export class CadastraReferenciaComponent implements OnInit {
+export class CadastraReferenciaComponent implements OnInit { // Use 'OnInit' corretamente
   membros: { id: string; nome: string }[] = [];
   avaliadorId = 'e45d88d9-ff3a-47ca-b62f-b4512b23d98a';
   referencia = {
@@ -31,7 +31,7 @@ export class CadastraReferenciaComponent implements OnInit {
     this.http.get<any[]>('http://localhost:8080/api/membros').subscribe({
       next: (data) => {
         this.membros = data.map((membro) => ({
-          id: membro.id,
+          id: membro.id.toString(),
           nome: membro.nome,
         }));
         console.log('Membros carregados:', this.membros);
@@ -44,47 +44,34 @@ export class CadastraReferenciaComponent implements OnInit {
   }
 
   cadastrarReferencia(): void {
-    this.submitted = true; // Marca que o formulário foi submetido
-  
-    // Validações do formulário
+    this.submitted = true;
+
     if (!this.referencia.avaliadoId || this.referencia.avaliadoId === 'undefined') {
-      console.error('Erro: avaliadoId está vazio ou inválido:', this.referencia.avaliadoId);
-      alert('Por favor, selecione um membro válido.');
+      alert('Por favor, selecione um membro avaliado.');
       return;
     }
+
     if (this.referencia.observacoes.length < 10) {
-      console.error('Erro: observações está vazio ou possui menos de 10 caracteres:', this.referencia.observacoes);
-      alert('Por favor, preencha o campo de observações com no mínimo 10 caracteres.');
+      alert('As observações devem conter no mínimo 10 caracteres.');
       return;
     }
-  
-    const payload: { [key: string]: string } = {
+
+    const payload = {
       observacoes: this.referencia.observacoes,
       tipoReferencia: this.referencia.tipoReferencia,
       avaliacao: this.referencia.avaliacao,
       avaliadorId: this.avaliadorId,
       avaliadoId: this.referencia.avaliadoId,
     };
-  
-    // Remove valores inválidos
-    Object.keys(payload).forEach((key) => {
-      if (!payload[key] || payload[key] === 'undefined') {
-        console.error(`Erro: O campo "${key}" está vazio ou inválido.`, payload[key]);
-        delete payload[key];
-      }
-    });
-  
-    console.log('Payload final enviado para a API:', payload);
-  
+
     this.http.post('http://localhost:8080/api/referencias', payload).subscribe({
       next: (response) => {
-        console.log('Referência cadastrada com sucesso!', response);
         alert('Referência cadastrada com sucesso!');
         this.resetFormulario();
       },
       error: (err) => {
         console.error('Erro ao cadastrar referência:', err);
-        alert('Erro ao cadastrar referência. Verifique os dados e tente novamente.');
+        alert('Erro ao cadastrar referência. Tente novamente.');
       },
     });
   }
