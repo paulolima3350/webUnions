@@ -1,18 +1,11 @@
 <div class="form-container">
   <h2>Cadastrar Referência</h2>
   <form (ngSubmit)="cadastrarReferencia()">
-    <!-- Dropdown para seleção de membro avaliado -->
+    <!-- Dropdown para seleção de membro -->
     <label for="avaliado">Selecione o Avaliado:</label>
-    <select
-      id="avaliado"
-      [(ngModel)]="referencia.avaliadoId"
-      name="avaliadoId"
-      required
-    >
+    <select id="avaliado" [(ngModel)]="referencia.avaliadoId" name="avaliadoId" required>
       <option value="" disabled [selected]="!referencia.avaliadoId">Selecione</option>
-      <option *ngFor="let membro of membros" [value]="membro.id">
-        {{ membro.nome }}
-      </option>
+      <option *ngFor="let membro of membros" [value]="membro.id">{{ membro.nome }}</option>
     </select>
 
     <!-- Campo para observações -->
@@ -27,22 +20,14 @@
 
     <!-- Dropdown para tipo de referência -->
     <label for="tipoReferencia">Tipo de Referência:</label>
-    <select
-      id="tipoReferencia"
-      [(ngModel)]="referencia.tipoReferencia"
-      name="tipoReferencia"
-    >
+    <select id="tipoReferencia" [(ngModel)]="referencia.tipoReferencia" name="tipoReferencia">
       <option value="INTERNA">Interna</option>
       <option value="EXTERNA">Externa</option>
     </select>
 
     <!-- Dropdown para avaliação -->
     <label for="avaliacao">Avaliação:</label>
-    <select
-      id="avaliacao"
-      [(ngModel)]="referencia.avaliacao"
-      name="avaliacao"
-    >
+    <select id="avaliacao" [(ngModel)]="referencia.avaliacao" name="avaliacao">
       <option value="PESSIMO">Péssimo</option>
       <option value="RAZOAVEL">Razoável</option>
       <option value="BOM">Bom</option>
