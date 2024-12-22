@@ -4,11 +4,11 @@
     background-size: cover; /* Faz a imagem cobrir toda a área */
     background-position: center; /* Centraliza a imagem */
     background-repeat: no-repeat; /* Evita repetição da imagem */
-    min-height: 100vh; /* Altura mínima da página */
+    min-height: 80vh; /* Altura mínima da página */
     display: flex; /* Para alinhar conteúdo dentro */
     justify-content: center; /* Centraliza horizontalmente o conteúdo */
     align-items: center; /* Centraliza verticalmente o conteúdo */
-    padding: 20px; /* Espaçamento interno */
+     /* Espaçamento interno */
     position: relative; /* Permite sobreposições */
     z-index: 0; /* Define o plano de fundo */
     filter: brightness(0.95); /* Ajusta o brilho para suavizar */

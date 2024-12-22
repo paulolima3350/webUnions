@@ -1,128 +1,64 @@
-<div class="container mt-4">
-  <div class="card shadow-lg border-0 rounded" style="max-width: 800px; margin: 0 auto;">
-    <!-- Cabeçalho -->
-    <div class="card-header bg-primary text-white text-center">
-      <h4>Cadastro de Membro</h4>
+<div class="form-container" style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+  <h2 style="text-align: center; margin-bottom: 20px;">Cadastrar Membro</h2>
+  <form (ngSubmit)="cadastrarMembro()">
+    <!-- Nome -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="nome" style="font-weight: bold;">Nome</label>
+      <input id="nome" [(ngModel)]="membro.nome" name="nome" type="text" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
     </div>
-    <div class="card-body">
-      <!-- Formulário -->
-      <form (ngSubmit)="cadastrarMembro()">
-        <div class="row g-3">
-          <!-- Campo: Nome -->
-          <div class="col-12 col-md-6">
-            <label for="nome" class="form-label">Nome</label>
-            <input
-              id="nome"
-              type="text"
-              class="form-control"
-              [(ngModel)]="membro.nome"
-              name="nome"
-              placeholder="Digite o nome"
-            />
-          </div>
 
-          <!-- Campo: E-mail -->
-          <div class="col-12 col-md-6">
-            <label for="email" class="form-label">E-mail</label>
-            <input
-              id="email"
-              type="email"
-              class="form-control"
-              [(ngModel)]="membro.email"
-              name="email"
-              placeholder="Digite o e-mail"
-            />
-          </div>
-
-          <!-- Campo: Telefone -->
-          <div class="col-12 col-md-6">
-            <label for="telefone" class="form-label">Telefone</label>
-            <input
-              id="telefone"
-              type="tel"
-              class="form-control"
-              [(ngModel)]="membro.telefone"
-              name="telefone"
-              placeholder="Digite o telefone"
-            />
-          </div>
-
-          <!-- Campo: Empresa -->
-          <div class="col-12 col-md-6">
-            <label for="empresa" class="form-label">Empresa</label>
-            <input
-              id="empresa"
-              type="text"
-              class="form-control"
-              [(ngModel)]="membro.empresa"
-              name="empresa"
-              placeholder="Digite a empresa"
-            />
-          </div>
-
-          <!-- Campo: Senha -->
-          <div class="col-12 col-md-6">
-            <label for="senha" class="form-label">Senha</label>
-            <input
-              id="senha"
-              type="password"
-              class="form-control"
-              [(ngModel)]="membro.senha"
-              name="senha"
-              placeholder="Digite a senha"
-            />
-          </div>
-
-          <!-- Campo: Mini Currículo -->
-          <div class="col-12">
-            <label for="curriculo" class="form-label">Mini Currículo</label>
-            <textarea
-              id="curriculo"
-              class="form-control"
-              [(ngModel)]="membro.curriculo"
-              name="curriculo"
-              rows="4"
-              placeholder="Digite o mini currículo"
-            ></textarea>
-          </div>
-
-          <!-- Campo: Site -->
-          <div class="col-12 col-md-6">
-            <label for="site" class="form-label">Site</label>
-            <input
-              id="site"
-              type="url"
-              class="form-control"
-              [(ngModel)]="membro.site"
-              name="site"
-              placeholder="Digite o site"
-            />
-          </div>
-
-          <!-- Campo: Grupo de Origem -->
-          <div class="col-12 col-md-6">
-            <label for="grupoOrigem" class="form-label">Grupo de Origem</label>
-            <select
-              id="grupoOrigem"
-              class="form-select"
-              [(ngModel)]="membro.grupoOrigem"
-              name="grupoOrigem"
-            >
-              <option value="" disabled selected>Escolha um grupo...</option>
-              <option *ngFor="let grupo of grupos" [value]="grupo.id">
-                {{ grupo.nome }}
-              </option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Botão de Enviar -->
-        <div class="mt-4">
-          <button type="submit" class="btn btn-primary btn-lg w-100">
-            Cadastrar Membro
-          </button>
-        </div>
-      </form>
+    <!-- Email -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="email" style="font-weight: bold;">Email</label>
+      <input id="email" [(ngModel)]="membro.email" name="email" type="email" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
     </div>
-  </div>
+
+    <!-- Telefone -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="telefone" style="font-weight: bold;">Telefone</label>
+      <input id="telefone" [(ngModel)]="membro.telefone" name="telefone" type="text" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+    </div>
+
+    <!-- Empresa -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="empresa" style="font-weight: bold;">Empresa</label>
+      <input id="empresa" [(ngModel)]="membro.empresa" name="empresa" type="text" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+    </div>
+
+    <!-- Senha -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="senha" style="font-weight: bold;">Senha</label>
+      <input id="senha" [(ngModel)]="membro.senha" name="senha" type="password" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+    </div>
+
+    <!-- Currículo -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="curriculo" style="font-weight: bold;">Currículo</label>
+      <textarea id="curriculo" [(ngModel)]="membro.curriculo" name="curriculo" rows="3" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+    </div>
+
+    <!-- Site da Empresa -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="siteEmpresa" style="font-weight: bold;">Site da Empresa</label>
+      <input id="siteEmpresa" [(ngModel)]="membro.siteEmpresa" name="siteEmpresa" type="url" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+    </div>
+
+    <!-- Grupo de Origem -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="grupoOrigem" style="font-weight: bold;">Grupo de Origem</label>
+      <select id="grupoOrigem" [(ngModel)]="membro.grupoOrigem" name="grupoOrigem" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        <option value="" disabled selected>Selecione um grupo</option>
+        <option *ngFor="let grupo of grupos" [value]="grupo.id">
+          {{ grupo.nome }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Botão de Enviar -->
+    <div style="text-align: center;">
+      <button type="submit" style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+        Cadastrar Membro
+      </button>
+    </div>
+  </form>
 </div>

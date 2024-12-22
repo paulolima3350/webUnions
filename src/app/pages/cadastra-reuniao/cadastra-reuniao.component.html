@@ -1,62 +1,52 @@
-<div class="container mt-5">
-  <div class="card shadow-lg border-0 rounded" style="max-width: 600px; margin: 0 auto;">
-    <div class="card-header bg-primary text-white text-center">
-      <h4>Cadastro de Reunião 1 a 1</h4>
+<div class="form-container" style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+  <h2 style="text-align: center; margin-bottom: 20px;">Cadastrar Reunião</h2>
+  <form [formGroup]="formReuniao" (ngSubmit)="onSubmit()">
+    <!-- Seleção de Membro -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="membro" style="display: block; font-weight: bold; margin-bottom: 5px;">Membro</label>
+      <select id="membro" formControlName="membro" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        <option value="" disabled selected>Selecione um membro</option>
+        <option *ngFor="let membro of nomesMembros" [value]="membro.id">
+          {{ membro.nome }}
+        </option>
+      </select>
+      <div *ngIf="formReuniao.get('membro')?.invalid && formReuniao.get('membro')?.touched">
+        <small class="error" style="color: red;">Selecione um membro.</small>
+      </div>
     </div>
-    <div class="card-body">
-      <form (ngSubmit)="onSubmit()" [formGroup]="formReuniao">
-        <!-- Seleção do Membro -->
-        <div class="form-floating mb-3">
-          <select id="membro" class="form-select" formControlName="membro">
-            <option value="" disabled selected>Escolha um membro...</option>
-            <option *ngFor="let membro of membros" [value]="membro.id">
-              {{ membro.nome }}
-            </option>
-          </select>
-          <label for="membro">Selecione o Membro</label>
-        </div>
 
-        <!-- Data e Hora -->
-        <div class="form-floating mb-3">
-          <input
-            type="datetime-local"
-            id="dataHora"
-            class="form-control"
-            formControlName="dataHora"
-          />
-          <label for="dataHora">Data e Hora</label>
-        </div>
-
-        <!-- Local -->
-        <div class="form-floating mb-3">
-          <input
-            type="text"
-            id="local"
-            class="form-control"
-            placeholder="Digite o local da reunião"
-            formControlName="local"
-          />
-          <label for="local">Local</label>
-        </div>
-
-        <!-- Motivo -->
-        <div class="form-floating mb-3">
-          <textarea
-            id="motivo"
-            class="form-control"
-            rows="3"
-            placeholder="Descreva o motivo da reunião"
-            formControlName="motivo"
-            style="height: 120px;"
-          ></textarea>
-          <label for="motivo">Motivo</label>
-        </div>
-
-        <!-- Botão de cadastro -->
-        <button type="submit" class="btn btn-primary btn-lg w-100">
-          Cadastrar Reunião
-        </button>
-      </form>
+    <!-- Campo Data e Hora -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="dataHora" style="display: block; font-weight: bold; margin-bottom: 5px;">Data e Hora</label>
+      <input id="dataHora" type="datetime-local" formControlName="dataHora" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+      <div *ngIf="formReuniao.get('dataHora')?.invalid && formReuniao.get('dataHora')?.touched">
+        <small class="error" style="color: red;">Informe uma data e hora válida.</small>
+      </div>
     </div>
-  </div>
+
+    <!-- Campo Local -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="local" style="display: block; font-weight: bold; margin-bottom: 5px;">Local</label>
+      <input id="local" type="text" formControlName="local" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+      <div *ngIf="formReuniao.get('local')?.invalid && formReuniao.get('local')?.touched">
+        <small class="error" style="color: red;">O local é obrigatório.</small>
+      </div>
+    </div>
+
+    <!-- Campo Motivo -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="motivo" style="display: block; font-weight: bold; margin-bottom: 5px;">Motivo</label>
+      <textarea id="motivo" formControlName="motivo" rows="4" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+      <div *ngIf="formReuniao.get('motivo')?.invalid && formReuniao.get('motivo')?.touched">
+        <small class="error" style="color: red;">O motivo deve ter no mínimo 10 caracteres.</small>
+      </div>
+    </div>
+
+    <!-- Botão de Enviar -->
+    <div style="text-align: center;">
+      <button type="submit" [disabled]="formReuniao.invalid" style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+        Cadastrar Reunião
+      </button>
+    </div>
+  </form>
 </div>
